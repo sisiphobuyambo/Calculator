@@ -40,7 +40,7 @@ gridParent.addEventListener("click", e=>{
             isOperatorActive = true;
             
 
-        }else if(action ==="clear"){
+        }else if(action ==="reset"){
 
             display.textContent =""
             historyInputs.textContent =""
