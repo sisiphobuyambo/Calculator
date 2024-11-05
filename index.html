@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator</title>
+    <meta name="description" content="Calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="calculator-container">
+        <div class="output-display" id="output-display">
+            <div id="current-inputs" class="current-inputs"></div>
+            <div id="current-answer" class="current-answer"></div>
+        </div>
+        <div id="grid-parent" class="grid-parent">
+            <button data-action="reset" class="btn reset">RESET</button>
+            <button data-action="clear" class="btn ">C</button>
+            <button data-action="divide" class="btn">/</button>
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button data-action="multiply" class="btn">*</button>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button data-action="minus" class="btn">-</button>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button data-action="add" class="btn">+</button>
+            <button data-action="decimal" class="btn">,</button>
+            <button class="btn">0</button>
+            <button data-action="calculate" class="btn calculate">=</button>
+        </div>
+    </div>
+
+    <script src="index.js" async defer></script>
+</body>
+
+</html>
