@@ -2,6 +2,7 @@ const gridParent = document.getElementById("grid-parent");
 const historyInputs = document.getElementById("current-inputs");
 const display = document.getElementById("current-answer");
 let isOperatorActive = false;
+let isDecimalActive = false;
 
 
 gridParent.addEventListener("click", e=>{
@@ -16,56 +17,107 @@ gridParent.addEventListener("click", e=>{
         
 
         if(!action){
-
-            if(displayedNum === " " || isOperatorActive){
-                display.textContent = numberKey;
-                historyInputs.textContent += numberKey;
-                isOperatorActive = false;
-                
-            }else{
-
-                display.textContent = displayedNum + numberKey;
-                historyInputs.textContent += numberKey;
-            }
+            numberKeys()
 
         }else if(
             action==="divide" ||
             action==="multiply" ||
             action==="minus" ||
-            action==="add"
-        ){
-
-            historyInputs.textContent +=" "+ numberKey +" "
-            key.classList.add("is-depressed")
-            isOperatorActive = true;
-            
+            action==="add")
+            {
+            operatorKeys()
 
         }else if(action ==="reset"){
-
-            display.textContent =""
-            historyInputs.textContent =""
+            reset()
 
         }else if(action ==="clear"){
-
-            display.textContent = displayedNum.substring(0, displayedNum.length - 1)
-            historyInputs.textContent = lastInput.substring(0, lastInput.trimEnd().length - 1)
-            
+            clear()
 
         }else if(action ==="decimal"){
+            appendDecimal()
 
-            display.textContent = displayedNum + ","
-            historyInputs.textContent += ","
-
-        }else if(action ==="calculate"){
-            
-            try{
-                display.textContent = calculate(historyInputs.textContent)
-            } catch{
-                historyInputs.textContent =""
-                display.textContent ="ERROR"
-            }
+        }else if(action ==="calculate"){  
+            calculateAnswer()
         }
+
+
+
+// FUNCTIONS
+
+function operatorKeys(){
+    if(!isOperatorActive){
+
+        if(historyInputs.textContent === "" && display.textContent != ""){
+            historyInputs.textContent += displayedNum +" "+ numberKey +" "
+        }else{
+            historyInputs.textContent +=" "+ numberKey +" "
+        }
+
+    }else{
+        key.disabled
+    }
+
+    isOperatorActive = true;
+
+}
+
+function reset(){
+    display.textContent =""
+    historyInputs.textContent =""
+}
+
+function clear(){
+    display.textContent = displayedNum.substring(0, displayedNum.length - 1)
+    historyInputs.textContent = lastInput.substring(0, lastInput.trimEnd().length - 1)
+}
+
+function appendDecimal(){
+    if(!isDecimalActive){
+        if(displayedNum===""){
+            display.textContent = "0"+ displayedNum + "."
+            historyInputs.textContent += "0" + "."
+        }else{
+            display.textContent = displayedNum + "."
+            historyInputs.textContent += "."
+        }
+        isDecimalActive = true
+
+    }else{
+         key.disabled
+
+    }
+}
+
+function calculateAnswer(){
+    try{
+        const returnedAnswer = calculate(historyInputs.textContent)
+        display.textContent = parseFloat(Number(returnedAnswer).toFixed(5))
+
+    } catch{
+        historyInputs.textContent =""
+        display.textContent ="ERROR"
+    }
+
+    historyInputs.textContent = ""
+}
+
+function numberKeys(){
+    if(displayedNum === " " || isOperatorActive){
+        display.textContent = numberKey;
+        historyInputs.textContent += numberKey;
+        isOperatorActive = false;
+        
+    }else{
+
+        display.textContent = displayedNum + numberKey;
+        historyInputs.textContent += numberKey;
+    }
+
+    isDecimalActive = false
+}
 
     }    
 })
+
+
 

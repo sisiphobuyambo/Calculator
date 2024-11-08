@@ -10,6 +10,7 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color: #92CFE2;
+   
 }
 
 
@@ -66,6 +67,13 @@ LAYOUT
     margin: 0 auto;
 }
 
+
+
+
+/*// BUTTONS STYLING //*/
+
+
+
 .btn{
     padding: 0.5em 0.5em;
     border: none;
@@ -78,31 +86,59 @@ LAYOUT
     box-shadow:  5px 5px 5px 0px #92b3d4;
 }
 
+.btn:hover{
+    background-color: rgb(79, 161, 186,0.7);
+}
+
+.btn:active{
+    background-color: rgb(79, 161, 186);
+}
+
+
 .reset{
     background-color: rgba(214, 35, 35, 0.9);
+}
+
+.reset:hover{
+    background-color: rgba(214, 35, 35, 0.7)
+}
+
+.reset:active{
+    background-color: rgba(214, 35, 35, 2)
+}
+
+.operator{
+    background-color: rgb(160, 204, 235);
+}
+
+.operator:hover{
+    background-color: rgb(160, 204, 235,0.7);
+}
+
+.operator:active{
+    background-color: rgb(160, 204, 235);
+}
+
+.calculate,
+.clear{
+    background-color: rgb(47, 98, 114,0.9);
+}
+
+.calculate:hover,
+.clear:hover{
+    background-color: rgb(47, 98, 114,0.7);
+}
+
+.calculate:active,
+.clear:active{
+    background-color: rgb(47, 98, 114);
 }
 
 .calculate,
 .reset{
     grid-column: span 2;
-    border-radius: 7px
+    border-radius: 5%;
 }
-
-
-.is-depressed:active{
-    border: 1px solid red;
-    background-color: bisque;
-}
-
-.operator{
-    background-color: rgb(160, 204, 235);
-    border: 1px solid #89c1f8;
-}
-
-.calculate{
-    background-color: rgb(47, 98, 114,0.9);
-}
-
 
 /*//////////////// 
 TYPOGRAPHY
